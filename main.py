@@ -136,7 +136,7 @@ def user_info_handler(message, user_id):
     if message.text == "Список друзей":
         url = "http://api.steampowered.com/ISteamUser/GetFriendList/v0001/"
         params = {
-            'key': '1F40A7E94200E3EB36C8834DA6599903',
+            'key': KEY,
             'steamid': user_id,
             'relationship': 'friend'
         }
