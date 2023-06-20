@@ -4,6 +4,7 @@ from telebot import types
 from auth_data import token
 import pprint
 from auth_data import steam
+from auth_data import KEY
 
 pp = pprint.PrettyPrinter()
 
@@ -108,7 +109,7 @@ def user_info_handler(message, user_id):
     if message.text == "Общая информация":
         url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002"
         params = {
-            'key': '1F40A7E94200E3EB36C8834DA6599903',
+            'key': KEY,
             'steamids': user_id
         }
         response = requests.get(url, params=params)
@@ -151,7 +152,7 @@ def user_info_handler(message, user_id):
             for steamid in friends_ids:
                 url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002"
                 params = {
-                    'key': '1F40A7E94200E3EB36C8834DA6599903',
+                    'key': KEY,
                     'steamids': steamid
                 }
                 temp_res = requests.get(url, params=params)
@@ -170,7 +171,7 @@ def user_info_handler(message, user_id):
     if message.text == "Список игр":
         url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001"
         params = {
-            'key': '1F40A7E94200E3EB36C8834DA6599903',
+            'key': KEY,
             'steamid': user_id,
             'include_played_free_games': 'false',
             'include_appinfo': 'true'
@@ -194,7 +195,7 @@ def user_info_handler(message, user_id):
     if message.text == "Список недавно сыгранных игр":
         url = "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001"
         params = {
-            'key': '1F40A7E94200E3EB36C8834DA6599903',
+            'key': KEY,
             'steamid': user_id,
             'include_played_free_games': 'false'
         }
@@ -225,7 +226,7 @@ def common_games_handler(message, user_ids):
 
         url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001"
         params = {
-            'key': '1F40A7E94200E3EB36C8834DA6599903',
+            'key': KEY,
             'steamid': user_ids[0],
             'include_played_free_games': 'false',
             'include_appinfo': 'true'
@@ -244,7 +245,7 @@ def common_games_handler(message, user_ids):
                 temp_list = []
 
                 params = {
-                    'key': '1F40A7E94200E3EB36C8834DA6599903',
+                    'key': KEY,
                     'steamid': user_ids[i],
                     'include_played_free_games': 'false',
                     'include_appinfo': 'true'
